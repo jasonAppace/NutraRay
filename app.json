@@ -22,8 +22,10 @@
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/images/favicon.png",
+      "baseUrl": "/nutraray"
     },
     "plugins": [
       "expo-router",
@@ -42,7 +44,8 @@
     ],
     "experiments": {
       "typedRoutes": true,
-      "reactCompiler": true
+      "reactCompiler": true,
+      "baseUrl": "/nutraray"
     }
   }
 }
