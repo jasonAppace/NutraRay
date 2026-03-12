@@ -10,14 +10,8 @@ import {
   Text,
   TextInput,
   View,
-  type PressableProps,
-  type ViewProps,
+  type ViewProps
 } from 'react-native';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-} from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { telehealthColors } from '@/constants/telehealth';
@@ -41,8 +35,8 @@ export function ScreenShell({
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* <LinearGradient colors={[telehealthColors.deepGreen, telehealthColors.deepOrange]} style={styles.gradientBg}> */}
-        <LinearGradient colors={['rgba(3, 13, 7, 0.76)', 'rgb(0, 0, 0, 0.5)']} style={StyleSheet.absoluteFill} />
-        <Image
+      <LinearGradient colors={['rgba(3, 13, 7, 0.76)', 'rgb(0, 0, 0, 0.5)']} style={StyleSheet.absoluteFill} />
+      <Image
         source={require('@/assets/images/nutra-bg.png')}
         style={[styles.backgroundImage]}
         resizeMode="cover" />
@@ -70,9 +64,9 @@ export function FloatingHeader({
         <Text style={styles.title}>{title}</Text>
       </View>
       {rightIcon ? (
-        <AnimatedPressable style={styles.iconWrap} onPress={onRightPress}>
+        <Pressable style={styles.iconWrap} onPress={onRightPress}>
           <Ionicons name={rightIcon} size={20} color={telehealthColors.textPrimary} />
-        </AnimatedPressable>
+        </Pressable>
       ) : null}
     </LinearGradient>
   );
@@ -126,11 +120,11 @@ export function Chip({
   onPress?: () => void;
 }) {
   return (
-    <AnimatedPressable
+    <Pressable
       style={[styles.chip, active ? styles.chipActive : undefined]}
       onPress={onPress}>
       <Text style={[styles.chipText, active ? styles.chipTextActive : undefined]}>{label}</Text>
-    </AnimatedPressable>
+    </Pressable>
   );
 }
 
@@ -144,12 +138,12 @@ export function PrimaryButton({
   icon?: keyof typeof Ionicons.glyphMap;
 }) {
   return (
-    <AnimatedPressable onPress={onPress} style={styles.buttonOuter}>
+    <Pressable onPress={onPress} style={styles.buttonOuter}>
       <LinearGradient colors={['#f26522', '#f58b19']} style={styles.buttonInner}>
         <Text style={styles.buttonLabel}>{label}</Text>
         {icon ? <Ionicons name={icon} size={17} color="#fff" /> : null}
       </LinearGradient>
-    </AnimatedPressable>
+    </Pressable>
   );
 }
 
@@ -161,9 +155,9 @@ export function SecondaryButton({
   onPress?: () => void;
 }) {
   return (
-    <AnimatedPressable onPress={onPress} style={styles.secondaryButton}>
+    <Pressable onPress={onPress} style={styles.secondaryButton}>
       <Text style={styles.secondaryLabel}>{label}</Text>
-    </AnimatedPressable>
+    </Pressable>
   );
 }
 
@@ -186,29 +180,6 @@ export function InputField({
   );
 }
 
-export function AnimatedPressable({ style, ...props }: PressableProps) {
-  const scale = useSharedValue(1);
-  const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: scale.value }],
-  }));
-
-  return (
-    <Animated.View style={animatedStyle}>
-      <Pressable
-        {...props}
-        onPressIn={(event) => {
-          scale.value = withSpring(0.97, { damping: 15, stiffness: 250 });
-          props.onPressIn?.(event);
-        }}
-        onPressOut={(event) => {
-          scale.value = withSpring(1, { damping: 15, stiffness: 250 });
-          props.onPressOut?.(event);
-        }}
-        style={style}
-      />
-    </Animated.View>
-  );
-}
 
 const styles = StyleSheet.create({
   backgroundImage: {
@@ -218,9 +189,9 @@ const styles = StyleSheet.create({
     left: '-8%',
     top: '-8%',
     opacity: 0.5,
-    tintColor: 'dark',
+    // tintColor: 'dark',
   },
-  safeArea: { flex: 1, backgroundColor: telehealthColors.bgPrimary },
+  safeArea: { flex: 1, backgroundColor: '#0f2619' },
   gradientBg: { flex: 1 },
   screenContent: { padding: 18, gap: 14, paddingBottom: 120 },
   headerWrap: {
@@ -241,8 +212,8 @@ const styles = StyleSheet.create({
   subtitle: { color: telehealthColors.textSecondary, fontSize: 12, marginBottom: 3 },
   title: { color: telehealthColors.textPrimary, fontSize: 24, fontWeight: '700' },
   iconWrap: {
-      backgroundColor: telehealthColors.deepGreen,
-      width: 42,
+    backgroundColor: telehealthColors.deepGreen,
+    width: 42,
     height: 42,
     borderRadius: 12,
     justifyContent: 'center',

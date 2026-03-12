@@ -1,9 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { AnimatedPressable, FloatingHeader, GlassCard, ScreenShell } from '@/components/telehealth/ui';
+import { FloatingHeader, GlassCard, ScreenShell } from '@/components/telehealth/ui';
 import { telehealthColors } from '@/constants/telehealth';
 
 const notifications = [
@@ -17,7 +17,7 @@ export default function NotificationsScreen() {
     <ScreenShell>
       <FloatingHeader title="Notifications" subtitle="Stay aligned with your daily plan" rightIcon="close" onRightPress={() => router.back()} />
       {notifications.map((item) => (
-        <AnimatedPressable key={item.title}>
+        <Pressable key={item.title}>
           <GlassCard style={styles.card}>
             <View style={styles.icon}>
               <Ionicons name="notifications-outline" size={18} color="#008b00" />
@@ -27,7 +27,7 @@ export default function NotificationsScreen() {
               <Text style={styles.text}>{item.text}</Text>
             </View>
           </GlassCard>
-        </AnimatedPressable>
+        </Pressable>
       ))}
     </ScreenShell>
   );

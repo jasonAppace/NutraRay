@@ -2,9 +2,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { AnimatedPressable, FloatingHeader, GlassCard, PrimaryButton, ScreenShell, SecondaryButton, SectionTitle } from '@/components/telehealth/ui';
+import { FloatingHeader, GlassCard, PrimaryButton, ScreenShell, SecondaryButton, SectionTitle } from '@/components/telehealth/ui';
 import { telehealthColors } from '@/constants/telehealth';
 
 const recommended = ['Morning Energy Boost', 'Breathing for Calm Focus', 'Metabolic Health Basics'];
@@ -26,12 +26,12 @@ export default function VideoDetailScreen() {
 
       <SectionTitle title="Recommended Videos" />
       {recommended.map((item) => (
-        <AnimatedPressable key={item}>
+        <Pressable key={item}>
           <GlassCard style={styles.reco}>
             <Ionicons name="play-circle-outline" size={22} color="#008b00" />
             <Text style={styles.recoText}>{item}</Text>
           </GlassCard>
-        </AnimatedPressable>
+        </Pressable>
       ))}
     </ScreenShell>
   );

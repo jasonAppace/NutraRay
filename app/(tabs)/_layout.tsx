@@ -15,7 +15,7 @@ export default function TabLayout() {
         tabBarStyle: styles.tabBar,
         tabBarBackground: () => (
           <View style={StyleSheet.absoluteFill}>
-            <BlurView intensity={45} tint="light" style={StyleSheet.absoluteFill} />
+            <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFill} />
           </View>
         ),
       }}>
@@ -89,11 +89,12 @@ const styles = StyleSheet.create({
     paddingTop: 8,
   },
   iconWrap: {
-    width: 36,
+    width: 40,
     height: 30,
-    borderRadius: 10,
+    borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 5
   },
   iconActive: {
     backgroundColor: telehealthColors.warmOrange,

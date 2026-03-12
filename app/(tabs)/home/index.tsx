@@ -1,10 +1,9 @@
 import { Image } from 'expo-image';
 import { Link, router } from 'expo-router';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import {
-  AnimatedPressable,
   Chip,
   FloatingHeader,
   GlassCard,
@@ -43,22 +42,22 @@ export default function HomeScreen() {
 
       <SectionTitle title="Trending Topics" />
       {trendingTopics.map((topic) => (
-        <AnimatedPressable key={topic}>
+        <Pressable key={topic}>
           <GlassCard>
             <Text style={styles.listTitle}>{topic}</Text>
             <Text style={styles.meta}>Expert reviewed</Text>
           </GlassCard>
-        </AnimatedPressable>
+        </Pressable>
       ))}
 
       <SectionTitle title="Recommended For You" />
       {recommendedTopics.map((topic) => (
-        <AnimatedPressable key={topic}>
+        <Pressable key={topic}>
           <GlassCard>
             <Text style={styles.listTitle}>{topic}</Text>
             <Text style={styles.meta}>Personalized track</Text>
           </GlassCard>
-        </AnimatedPressable>
+        </Pressable>
       ))}
 
       <SectionTitle title="Quick Actions" />

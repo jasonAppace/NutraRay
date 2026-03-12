@@ -1,8 +1,8 @@
 import { Link, router } from 'expo-router';
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 
-import { AnimatedPressable, FloatingHeader, GlassCard, ScreenShell } from '@/components/telehealth/ui';
+import { FloatingHeader, GlassCard, ScreenShell } from '@/components/telehealth/ui';
 
 const options = ['Notification settings', 'Privacy policy', 'Terms of service', 'Help center'];
 
@@ -11,11 +11,11 @@ export default function SettingsScreen() {
     <ScreenShell>
       <FloatingHeader title="Settings" subtitle="Preferences and legal" rightIcon="arrow-back" onRightPress={() => router.back()} />
       {options.map((item) => (
-        <AnimatedPressable key={item}>
+        <Pressable key={item}>
           <GlassCard>
             <Text style={styles.item}>{item}</Text>
           </GlassCard>
-        </AnimatedPressable>
+        </Pressable>
       ))}
       <Link href="/notifications" style={styles.link}>
         Open Notifications

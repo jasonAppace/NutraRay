@@ -1,9 +1,9 @@
 import { Image } from 'expo-image';
 import { Link } from 'expo-router';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { AnimatedPressable, FloatingHeader, GlassCard, ScreenShell } from '@/components/telehealth/ui';
+import { FloatingHeader, GlassCard, ScreenShell } from '@/components/telehealth/ui';
 
 const menuItems = [
   { label: 'Edit profile', href: '/(tabs)/profile/edit-profile' as const },
@@ -28,11 +28,11 @@ export default function ProfileScreen() {
 
       {menuItems.map((item) => (
         <Link key={item.label} href={item.href} asChild>
-          <AnimatedPressable>
+          <Pressable>
             <GlassCard>
               <Text style={styles.menu}>{item.label}</Text>
             </GlassCard>
-          </AnimatedPressable>
+          </Pressable>
         </Link>
       ))}
     </ScreenShell>

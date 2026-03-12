@@ -1,8 +1,8 @@
 import { router } from 'expo-router';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { AnimatedPressable, FloatingHeader, GlassCard, ScreenShell, SecondaryButton } from '@/components/telehealth/ui';
+import { FloatingHeader, GlassCard, ScreenShell, SecondaryButton } from '@/components/telehealth/ui';
 import { telehealthColors } from '@/constants/telehealth';
 
 const books = [
@@ -18,7 +18,7 @@ export default function EbookLibraryScreen() {
       <FloatingHeader title="eBook Library" subtitle="Read and download care guides" rightIcon="arrow-back" onRightPress={() => router.back()} />
       <View style={styles.grid}>
         {books.map((book) => (
-          <AnimatedPressable key={book.title} style={styles.cardWrap}>
+          <Pressable key={book.title} style={styles.cardWrap}>
             <GlassCard style={styles.bookCard}>
               <View style={styles.cover} />
               <Text style={styles.title}>{book.title}</Text>
@@ -26,7 +26,7 @@ export default function EbookLibraryScreen() {
               <SecondaryButton label="Read Online" />
               <SecondaryButton label="Download" />
             </GlassCard>
-          </AnimatedPressable>
+          </Pressable>
         ))}
       </View>
     </ScreenShell>
