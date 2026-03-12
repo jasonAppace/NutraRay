@@ -25,7 +25,7 @@
       "bundler": "metro",
       "output": "single",
       "favicon": "./assets/images/favicon.png",
-      "baseUrl": "/nutraray"
+      "baseUrl": "/nutraray/app"
     },
     "plugins": [
       "expo-router",
@@ -45,7 +45,7 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true,
-      "baseUrl": "/nutraray"
+      "baseUrl": "/nutraray/app"
     }
   }
 }
