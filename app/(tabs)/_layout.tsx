@@ -42,12 +42,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="exercise"
+        name="ebooks"
         options={{
-          title: 'Exercise',
+          title: 'eBooks',
           tabBarIcon: ({ color, focused }) => (
             <View style={[styles.iconWrap, focused ? styles.iconActive : undefined]}>
-              <Ionicons name="barbell-outline" size={20} color={color} />
+              <Ionicons name="library-outline" size={20} color={color} />
             </View>
           ),
         }}

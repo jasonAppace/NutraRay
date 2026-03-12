@@ -27,9 +27,12 @@ export default function VideoDetailScreen() {
       <SectionTitle title="Recommended Videos" />
       {recommended.map((item) => (
         <Pressable key={item}>
-          <GlassCard style={styles.reco}>
-            <Ionicons name="play-circle-outline" size={22} color="#008b00" />
-            <Text style={styles.recoText}>{item}</Text>
+          <GlassCard >
+            <View style={styles.reco}>
+
+              <Ionicons name="play-circle-outline" size={22} color="#008b00" />
+              <Text style={styles.recoText}>{item}</Text>
+            </View>
           </GlassCard>
         </Pressable>
       ))}

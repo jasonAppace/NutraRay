@@ -62,8 +62,8 @@ export default function HomeScreen() {
 
       <SectionTitle title="Quick Actions" />
       <View style={styles.quickActions}>
-        <Link href="/(tabs)/exercise/workout-detail" asChild>
-          <PrimaryButton label="Start Workout" icon="barbell-outline" />
+        <Link href="/(tabs)/ebooks" asChild>
+          <PrimaryButton label="Browse eBooks" icon="library-outline" />
         </Link>
         <Link href="/(tabs)/library/video-detail" asChild>
           <PrimaryButton label="Watch Video" icon="videocam-outline" />
