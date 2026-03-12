@@ -1,10 +1,10 @@
+import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 
-import { FloatingHeader, GlassCard, ScreenShell, SecondaryButton } from '@/components/telehealth/ui';
+import { FloatingHeader, GlassCard, ScreenShell } from '@/components/telehealth/ui';
 import { telehealthColors } from '@/constants/telehealth';
 
 export default function ArticleDetailScreen() {
@@ -37,11 +37,6 @@ export default function ArticleDetailScreen() {
           </Text>
         </View>
       </GlassCard>
-
-      <View style={styles.floatActions}>
-        <SecondaryButton label="Bookmark" />
-        <SecondaryButton label="Share" />
-      </View>
     </ScreenShell>
   );
 }
@@ -63,12 +58,12 @@ const styles = StyleSheet.create({
   meta: { color: telehealthColors.textSecondary, marginTop: 6, marginBottom: 9, fontSize: 12 },
   authorRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 10 },
   author: { color: telehealthColors.textSecondary, fontSize: 12 },
-  paragraph: { color: '#325142', lineHeight: 22, marginBottom: 10 },
+  paragraph: { color: telehealthColors.textSecondary, lineHeight: 22, marginBottom: 10 },
   quoteBox: {
-    backgroundColor: '#edf6ef',
+    backgroundColor: telehealthColors.cardBg,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#d3e6d7',
+    borderColor: telehealthColors.cardBorder,
     padding: 10,
     marginTop: 2,
   },

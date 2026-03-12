@@ -18,13 +18,16 @@ export default function NotificationsScreen() {
       <FloatingHeader title="Notifications" subtitle="Stay aligned with your daily plan" rightIcon="close" onRightPress={() => router.back()} />
       {notifications.map((item) => (
         <Pressable key={item.title}>
-          <GlassCard style={styles.card}>
-            <View style={styles.icon}>
-              <Ionicons name="notifications-outline" size={18} color="#008b00" />
-            </View>
-            <View style={styles.content}>
-              <Text style={styles.title}>{item.title}</Text>
-              <Text style={styles.text}>{item.text}</Text>
+          <GlassCard>
+            <View style={styles.card}>
+
+              <View style={styles.icon}>
+                <Ionicons name="notifications-outline" size={18} color="#008b00" />
+              </View>
+              <View style={styles.content}>
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.text}>{item.text}</Text>
+              </View>
             </View>
           </GlassCard>
         </Pressable>
