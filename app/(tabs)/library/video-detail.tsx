@@ -14,7 +14,7 @@ export default function VideoDetailScreen() {
     <ScreenShell>
       <FloatingHeader title="Video Detail" subtitle="Video-based care" rightIcon="arrow-back" onRightPress={() => router.back()} />
       <GlassCard>
-        <Image source={{ uri: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800' }} style={styles.player} contentFit="cover" />
+        <Image source={{ uri: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200' }} style={styles.player} contentFit="cover" />
         <Text style={styles.title}>Doctor-Led Metabolic Health Routine</Text>
         <Text style={styles.meta}>Category: Preventive Care • Duration: 07:45</Text>
         <Text style={styles.desc}>A practical daily protocol that combines movement, hydration, and meal timing habits.</Text>
