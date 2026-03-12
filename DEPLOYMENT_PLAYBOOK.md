@@ -2,8 +2,7 @@
 
 > **App:** NutraRay
 > **Server:** `root@144.91.74.217` · **Port:** `9000`
-> **Preview URL:** https://demo.sourapps.com/nutraray/
-> **App URL:** https://demo.sourapps.com/nutraray/app/
+> **Live URL:** https://demo.sourapps.com/nutraray/
 
 ---
 
@@ -20,12 +19,12 @@ Add or update the `web` and `experiments` objects in your `app.json`:
   "bundler": "metro",
   "output": "single",
   "favicon": "./assets/images/favicon.png",
-  "baseUrl": "/nutraray/app"
+  "baseUrl": "/nutraray"
 },
 "experiments": {
   "typedRoutes": true,
   "reactCompiler": true,
-  "baseUrl": "/nutraray/app"
+  "baseUrl": "/nutraray"
 }
 ```
 
@@ -42,11 +41,10 @@ dist/
 
 ### 1.3 `preview.html` (Optional)
 
-The preview phone frame is served at the root `/nutraray/` so no filename appears in the URL.
-Set `PREVIEW_URL` inside `preview.html` to the app sub-path:
+If you use a preview page, update branding to **NutraRay** and set `PREVIEW_URL` to:
 
 ```
-https://demo.sourapps.com/nutraray/app/
+https://demo.sourapps.com/nutraray/
 ```
 
 ---
@@ -66,7 +64,7 @@ npm install
 npx expo export --platform web
 
 # 3. Inject subpath routing patch
-sed -i 's#</head>#<script>(function(){var b="/nutraray/app",p=location.pathname;if(p===b||p.startsWith(b+"/")){history.replaceState(null,"",p.slice(b.length)||"/")}})()</script></head>#' dist/index.html
+sed -i 's#</head>#<script>(function(){var b="/nutraray",p=location.pathname;if(p===b||p.startsWith(b+"/")){history.replaceState(null,"",p.slice(b.length)||"/")}})()</script></head>#' dist/index.html
 
 # 4. Start with PM2 on port 9000
 pm2 start "npx serve /var/www/NutraRay/dist -p 9000 --single" --name nutraray
@@ -82,17 +80,16 @@ Edit: `nano /etc/nginx/sites-available/default`
 Add the following **inside** the `server { ... }` block:
 
 ```nginx
-# NutraRay — Phone frame preview (served at root, no filename in URL)
-location = /nutraray/ {
-    alias      /var/www/NutraRay/preview.html;
-    add_header Content-Type text/html;
-}
-
-# NutraRay — Expo App
-location /nutraray/app/ {
+# NutraRay
+location /nutraray/ {
     proxy_pass         http://localhost:9000/;
     proxy_http_version 1.1;
     proxy_set_header   Host $host;
+}
+
+# NutraRay — Preview Page
+location = /nutraray/preview.html {
+    alias /var/www/NutraRay/preview.html;
 }
 
 # NutraRay — Asset Fallback
@@ -120,8 +117,8 @@ nginx -t && systemctl restart nginx
 
 | Check            | URL                                                   |
 | ---------------- | ----------------------------------------------------- |
-| 📱 Preview Frame | https://demo.sourapps.com/nutraray/                   |
-| 🟢 Live App      | https://demo.sourapps.com/nutraray/app/               |
+| 🟢 Live App      | https://demo.sourapps.com/nutraray/                   |
+| 📱 Preview Frame | https://demo.sourapps.com/nutraray/preview.html       |
 
 ---
 
@@ -153,6 +150,6 @@ cd /var/www/NutraRay
 git pull
 npm install
 npx expo export --platform web
-sed -i 's#</head>#<script>(function(){var b="/nutraray/app",p=location.pathname;if(p===b||p.startsWith(b+"/")){history.replaceState(null,"",p.slice(b.length)||"/")}})()</script></head>#' dist/index.html
+sed -i 's#</head>#<script>(function(){var b="/nutraray",p=location.pathname;if(p===b||p.startsWith(b+"/")){history.replaceState(null,"",p.slice(b.length)||"/")}})()</script></head>#' dist/index.html
 pm2 restart nutraray
 ```
