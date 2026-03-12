@@ -226,6 +226,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 8 },
     elevation: 3,
     borderRadius: 12,
+    alignSelf: 'stretch',
   },
   glass: {
     backgroundColor: telehealthColors.cardBg,
